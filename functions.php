@@ -31,7 +31,8 @@ function biji_enqueue_scripts() {
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', [], THEME_VERSION );
 
     // 禁用jQuery
-    wp_deregister_script( 'jquery' );
+    // wp_deregister_script( 'jquery' );
+
     // 咱们的主题使用Vue
     wp_enqueue_script( 'vue', '//cdn.staticfile.org/vue/2.6.14/vue.min.js', [], THEME_VERSION, true );
     // 开启代码高亮
@@ -232,7 +233,7 @@ function comment_mail_notify( $comment_id ) {
             </tr>
         </tbody>
     </table>
-    
+
     <table width="100%" cellspacing="0" border="0" cellpadding="0" align="center" style="border-collapse: separate; border-spacing: 0; padding: 5% 0; table-layout: fixed; text-align: center">
         <tbody>
             <tr>
@@ -285,7 +286,7 @@ add_filter( 'the_content', 'password_protected_change' );
 
 // 获取皮肤模式
 function the_skin_mode() {
-    $mode = $_COOKIE['skin-mode'] ?? get_theme_mod( 'biji_setting_mode', 'auto' );
+    $mode = $_COOKIE['skin-mode'] ?? 'light';
     print $mode;
 }
 
@@ -349,6 +350,127 @@ function get_praise( $post_id = null ) {
     $post_id = $post_id ?: get_the_ID();
 
     return ( get_post_meta( $post_id, 'praise', true ) ?: 0 ) + ( get_post_meta( $post_id, 'dotGood', true ) ?: 0 );
+}
+
+// 获取文章缩略图
+function _get_post_thumbnail($size = 'thumbnail', $class = 'thumb') {
+	global $post;
+	$r_src = '';
+	if (has_post_thumbnail()) {
+        $domsxe = get_the_post_thumbnail();
+        preg_match_all('/<img.*?(?: |\\t|\\r|\\n)?src=[\'"]?(.+?)[\'"]?(?:(?: |\\t|\\r|\\n)+.*?)?>/sim', $domsxe, $strResult, PREG_PATTERN_ORDER);
+        $images = $strResult[1];
+        foreach($images as $src){
+        	$r_src = $src;
+            break;
+        }
+	}else{
+	    $thumblink = get_post_meta($post->ID, 'thumblink', true);
+		if(!empty($thumblink) ){
+			$r_src = $thumblink;
+		} else {
+			$content = $post->post_content;
+	        preg_match_all('/<img.*?(?: |\\t|\\r|\\n)?src=[\'"]?(.+?)[\'"]?(?:(?: |\\t|\\r|\\n)+.*?)?>/sim', $content, $strResult, PREG_PATTERN_ORDER);
+	        $images = $strResult[1];
+
+	        foreach($images as $src){
+		        if( _hui('thumb_postfirstimg_lastname') ){
+		            $filetype = _get_filetype($src);
+		            $src = rtrim($src, '.'.$filetype)._hui('thumb_postfirstimg_lastname').'.'.$filetype;
+		        }
+
+		        $r_src = $src;
+		        break;
+	        }
+		}
+    }
+
+	if( $r_src ){
+        return sprintf('<img src="%s" alt="%s" class="thumb">', $r_src, $post->post_title.'-'.get_bloginfo('name'));
+    }else{
+    	return sprintf('<img data-thumb="default" src="%s" class="thumb">', get_stylesheet_directory_uri().'/img/thumbnail.png');
+    }
+}
+
+
+function is_post_new(){
+
+	global $post;
+
+	date_default_timezone_set('PRC');
+
+	if( strtotime(get_the_date('Y-m-d H:i:s')) >= time() - 3600*3 ){
+		return true;
+	}
+
+	return false;
+}
+
+function get_the_subtitle($span=true){
+    global $post;
+    $post_ID = $post->ID;
+    $subtitle = get_post_meta($post_ID, 'subtitle', true);
+
+    if( !empty($subtitle) ){
+    	if( $span ){
+        	return ' <span>'.$subtitle.'</span>';
+        }else{
+        	return ' '.$subtitle;
+        }
+    }else{
+        return false;
+    }
+}
+
+
+function _new_strlen($str,$charset='utf-8') {
+    $n = 0; $p = 0; $c = '';
+    $len = strlen($str);
+    if($charset == 'utf-8') {
+        for($i = 0; $i < $len; $i++) {
+            $c = ord(substr($str,$i,1));
+            if($c > 252) {
+                $p = 5;
+            } elseif($c > 248) {
+                $p = 4;
+            } elseif($c > 240) {
+                $p = 3;
+            } elseif($c > 224) {
+                $p = 2;
+            } elseif($c > 192) {
+                $p = 1;
+            } else {
+                $p = 0;
+            }
+            $i+=$p;$n++;
+        }
+    } else {
+        for($i = 0; $i < $len; $i++) {
+            $c = ord(substr($str,$i,1));
+            if($c > 127) {
+                $p = 1;
+            } else {
+                $p = 0;
+        }
+            $i+=$p;$n++;
+        }
+    }
+    return $n;
+}
+
+
+function _str_cut($str, $start, $width, $trimmarker) {
+	$output = preg_replace('/^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,' . $start . '}((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,' . $width . '}).*/s', '\1', $str);
+	return $output . $trimmarker;
+}
+
+function _get_excerpt($limit = 120, $after = '...') {
+	$excerpt = get_the_excerpt();
+	if (_new_strlen($excerpt) > $limit) {
+		return _str_cut(strip_tags($excerpt), 0, $limit, $after);
+	} else {
+		return $excerpt;
+	}
 }
 
 // 全部配置完毕

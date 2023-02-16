@@ -98,7 +98,7 @@ class Language {
             "ja": "全て"
         },
         "Notes": {
-            "zh_SC": "笔记",
+            "zh_SC": "说说",
             "zh_TC": "筆記",
             "ja": "ノート"
         },

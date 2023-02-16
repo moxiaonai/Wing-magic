@@ -75,6 +75,16 @@ get_header(); ?>
                                     </span>
                                 </ul>
                             </div>
+                            <div v-if="loading && !filterNoteList.length" class="wing-skeleton wing-skeleton-animated">
+                                <div class="wing-skeleton-item">
+                                    <div class="wing-skeleton-content">
+                                    <div class="wing-skeleton-line"></div>
+                                    <div class="wing-skeleton-line"></div>
+                                    <div class="wing-skeleton-line"></div>
+                                    <div class="wing-skeleton-line"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="notes-list" :style="{ opacity: loading ? 0.5 : 1 }">
                                 <note-card v-for="(note, index) in filterNoteList" :key="note.id" v-bind="{ logged, lately, note }" @event="data => handleNoteCard(data, note, index)" @topic="handleTopic" />
                                 <div v-if="paging.total && !loading && theEnd" class="text-center" style="opacity: 0.5;">{{ $lang.translate('No more') }}</div>

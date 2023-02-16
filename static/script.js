@@ -177,6 +177,7 @@ window.$vm = new Vue({
     data() {
         return {
             animation: "",
+            mode: Cookies.get('skin-mode'),
             modeList: [
                 { name: $lang.translate('Auto'), icon: 'czs-bot', mode: 'auto' },
                 { name: $lang.translate('Light'), icon: 'czs-sun', mode: 'light' },
@@ -284,11 +285,14 @@ window.$vm = new Vue({
                 });
             }
         },
-        toggleSkinMode(e) {
-            const target = e.target;
-            if ( !target.closest('a') ) return;
-            const mode = target.dataset.mode;
+        toggleSkinMode() {
+            // const target = e.target;
+            // if ( !target.closest('a') ) return;
+            // const mode = target.dataset.mode;
+            let mode = Cookies.get('skin-mode');
+            mode = mode === 'dark' ? 'light': 'dark'
             Cookies.set('skin-mode', mode);
+            this.mode = mode;
             ((body) => {
                 body.remove('auto', 'light', 'dark');
                 body.add(mode);

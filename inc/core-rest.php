@@ -18,7 +18,6 @@ function tryGetValue( $key, $default = '' ) {
 // 获取文章信息
 function ajax_get_all_posts_callback() {
     check_nonce();
-
     // 参数
     $type = tryGetValue( 'type', 'single' );
     $ids  = tryGetValue( 'ids' );
@@ -89,7 +88,6 @@ function ajax_get_all_posts_callback() {
     }
 
     $posts = get_posts( $args ); // 文章
-
     $args['posts_per_page'] = - 1;
     $args['fields']         = 'ids';
     $count                  = get_posts( $args ); // 文章数量
