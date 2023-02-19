@@ -23,6 +23,18 @@ function ajax_get_all_posts_callback() {
     $ids  = tryGetValue( 'ids' );
     $rows = tryGetValue( 'rows', 10 );
     $page = tryGetValue( 'page', 1 );
+    $sticky_ids = get_option('sticky_posts');
+    $sticky_posts = []; //置顶文章
+    if( $page <= 1 ){
+        $args = array(
+            'post__in'            => $sticky_ids,
+            'posts_per_page'      => 4,
+            'ignore_sticky_posts' => 1
+        );
+        $sticky_posts  = query_posts($args);
+    }else{
+        $sticky_posts = [];
+    }
 
     // 查询条件
     $args = [
@@ -34,6 +46,7 @@ function ajax_get_all_posts_callback() {
         'order'          => 'DESC',
         'author'         => get_current_user_id(),
         'tax_query'      => [],
+        'post__not_in'            => $sticky_ids,
 //        'has_password'   => false,
     ];
 
@@ -88,6 +101,8 @@ function ajax_get_all_posts_callback() {
     }
 
     $posts = get_posts( $args ); // 文章
+    $posts = array_merge($sticky_posts, $posts);
+
     $args['posts_per_page'] = - 1;
     $args['fields']         = 'ids';
     $count                  = get_posts( $args ); // 文章数量
@@ -142,7 +157,8 @@ function ajax_get_all_posts_callback() {
         }
 
         $post->thumbnail = replace_domain( $post->thumbnail );
-
+        $sticky_ids = get_option('sticky_posts');
+        $post->is_sticky = is_array($sticky_ids) && in_array($post->id, $sticky_ids);//是否置顶
         return $post;
     }, $posts );
 

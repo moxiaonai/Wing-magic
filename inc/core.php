@@ -228,7 +228,7 @@ function get_post_toc( $post_id = null ) {
 
     $_li = "";
     foreach ( $toc as $v ) {
-        $_li .= '<li class="toc-item nav-item" style="text-indent: ' . ( $v['indent'] ) . 'em"><a href="#toc-' . $v['anchor'] . '">' . $v['title'] . '</a></li>';
+        $_li .= '<li class="toc-item nav-item" style="text-indent: ' . ( $v['indent'] ) . 'em"><a class="text-ellipsis" href="#toc-' . $v['anchor'] . '">' . $v['title'] . '</a></li>';
     }
 
     return "<ul class='toc-list toc-content'>$_li</ul>";

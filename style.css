@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
-	Theme Name: Wing
-	Theme URL: https://theme.biji.io/wing
+	Theme Name: Wing-magic
+	Theme URL: https://github.com/moxiaonai/Wing-magic
 	Description: Simple, smooth, data-driven, responsive WordPress theme
 	Author: Tokin
 	Author URI: https://biji.io
@@ -10,25 +10,11 @@
 	Requires at least: 5.8
 	Requires PHP: 7.0
 */
-/* Manually forked from Normalize.css */
-/* normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
-/**
- * 1. Change the default font family in all browsers (opinionated).
- * 2. Correct the line height in all browsers.
- * 3. Prevent adjustments of font size after orientation changes in
- *    IE on Windows Phone and in iOS.
- */
-/* Document
-   ========================================================================== */
-:root {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -36,12 +22,10 @@ html {
   font-size: 20px;
   line-height: 1.5;
   -webkit-tap-highlight-color: transparent;
-  /* 1 */
   -ms-text-size-adjust: 100%;
-  /* 3 */
   -webkit-text-size-adjust: 100%;
-  /* 3 */
   scroll-behavior: smooth;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
@@ -491,7 +475,7 @@ template {
 }
 
 a {
-  color: #FF5E52;
+  color: #444;
   outline: none !important;
   text-decoration: none;
   background-color: transparent;
@@ -1704,6 +1688,13 @@ border-left:#FF5E52;font-size: 12px;list-style: none;
   .show-lg {
     display: block !important;
   }
+
+  body .layout #header .logo {
+    text-align: left!important;
+  }
+  body .layout #header .logo .logo-img {
+    width: 100px;
+  }
 }
 @media (max-width: 840px) {
   .col-md-12,
@@ -2899,10 +2890,6 @@ a.text-error:visited {
   margin: 0 !important;
 }
 
-.mb-0 {
-  /** margin-bottom: 0 !important;**/
-}
-
 .ml-0 {
   margin-left: 0 !important;
 }
@@ -3316,7 +3303,7 @@ a.text-error:visited {
 code.prettyprint {
   background: #000;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
-  padding: 4px 6px;
+  padding: 2px 6px;
   display: inline-block;
 }
 
@@ -3512,119 +3499,30 @@ body .layout .uni-card {
 body .layout .uni-card:not([class*=bg-]) {
   background-color: rgba(247, 248, 249, 0.02);
 }
-body .layout .db--container .lds-ripple {
-  margin: 5%;
-}
-body .layout .db--nav {
-  position: relative;
-  padding: 1rem 1rem 0 2rem;
-  margin: -1.05rem -2rem 1rem;
-
-  z-index: 1;
-}
-body .layout .db--genres {
-  gap: 5px;
-  padding: 0;
-  margin-bottom: 1rem;
-}
-body .layout .db--genreItem {
-  margin: 0;
-  background: rgba(188, 195, 206, 0.1);
-}
-body .layout .db--genreItem:hover, body .layout .db--genreItem.is-active {
-  background-color: #FF5E52;
-}
-body .layout .db--score {
-  color: #fff;
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  z-index: 1;
-}
-body .layout .db--title {
-  margin-top: 0;
-  position: absolute;
-  inset: 0;
-  padding: 5%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8) 0, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.8));
-  display: flex;
-  align-items: flex-end;
-  text-align: center;
-  justify-content: center;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
-  transition: all 300ms;
-}
-body .layout .db--title a {
-  color: #fff;
-}
-body .layout .db--title:hover {
-  padding-bottom: 10%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8) 0, transparent 20%, transparent 60%, rgba(0, 0, 0, 0.8));
-}
-body .layout .db--list {
-  margin: -1%;
-}
-body .layout .db--item {
-  margin: 1%;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 0;
-  padding: 16% 11.5%;
-}
-body .layout .db--item .ipc-signpost {
-  position: absolute;
-  width: 96px;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
-  transform: translateX(-1rem);
-  opacity: 0;
-  transition: 300ms;
-}
-body .layout .db--item:hover .ipc-signpost {
-  transform: translateX(0);
-  opacity: 1;
-}
-body .layout .db--image {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-}
-@media (max-width: 38rem) {
-  body .layout .db--list {
-    margin: -2%;
-  }
-  body .layout .db--item {
-    margin: 2%;
-    padding: 22% 14.5%;
-  }
-}
-@media (max-width: 25rem) {
-  body .layout .db--item {
-    padding: 32% 22.5%;
-  }
-}
 body .layout #header {
   position: relative;
-  width: 100%;
+  width: 92%;
   height: 6rem;
-  padding: 0 4%;
   color: #fff;
-  max-width: 65rem;
+  max-width: 60rem;
   margin: 0 auto;
 }
-body .layout #header .logo {
-  text-align: center;
-}
-body .layout #header .logo .fullname {
+
+body .layout #header .logo  {
   margin: 0;
   font-size: 1.5rem;
+  width: 232px;
+  text-align: center;
 }
-body .layout #header .logo .fullname a {
-  color: #66758c;
-  text-decoration: none;
+
+#header .logo-img {
+  width: 120px;
 }
+
+.sidebar-logo {
+  display: none;
+}
+
 body .layout #header .header__right {
   position: absolute;
   top: 50%;
@@ -3905,6 +3803,7 @@ body .layout #aside .toc-list .nav-item {
 body .layout #aside .toc-list .nav-item a {
   color: currentColor;
   font-size: 0.7rem;
+  display: block;
 }
 body .layout #aside .toc-list .nav-item a:hover {
   color: #FF5E52;
@@ -3965,11 +3864,9 @@ body .layout #notes .notes-core .editor-box .btn-private .dashicons {
 body .layout #notes .notes-tabbar {
   z-index: 9;
   transition: 300ms;
-  margin: 0 -32px;
-  padding: 0 32px;
 }
 body .layout #notes .notes-tabbar .tab {
-  margin: 0 0 1.2rem;
+  margin: 0 0 12px;
   transition: 300ms;
   border-color: rgba(188, 195, 206, 0.2);
 }
@@ -4616,7 +4513,6 @@ body .layout #footer a.theme-name::after {
   }
   body .layout #aside .sticky {
     top: 0 !important;
-    padding-top: 1rem;
     max-height: 100vh !important;
     margin-right: -0.5rem;
   }
@@ -4627,8 +4523,15 @@ body .layout #footer a.theme-name::after {
     padding: 5%;
   }
   body .layout #main::before,
-body .layout #core {
+  body .layout #core {
     width: 100%;
+  }
+  .sidebar-logo {
+    text-align: center;
+    display: block;
+  }
+  .sidebar-logo img {
+    width: 88px;
   }
 }
 @media (max-width: 38rem) {
@@ -5103,6 +5006,225 @@ body .view-image-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+
+/* 骨架屏动画 */
+.wing-skeleton-animated .wing-skeleton-line {
+  background: linear-gradient(90deg,#e4e6eb, rgba(228,230,235,0.4),#e4e6eb);
+  background-size: 480px 480px;
+  animation: skeleton-keyframes .6s linear infinite
+}
+
+.wing-skeleton {
+  width: 100%;
+  /* background-color: #ffffff; */
+}
+
+.wing-skeleton-item {
+  padding-bottom: 21px;
+  margin-bottom: 21px;
+  border-bottom: 1px solid #f3f3f3
+}
+
+.wing-skeleton-item:last-child {
+  padding: 0;
+  margin: 0;
+  border: none
+}
+
+.wing-skeleton-content {
+  overflow: hidden;
+}
+
+.wing-skeleton-line {
+  width: 100%;
+  margin-bottom: 16px;
+  height: 14px;
+  border-radius: 8px;
+}
+
+.wing-skeleton-line:first-child {
+  width: 40%;
+  margin-top: 8px
+}
+
+.wing-skeleton-line:nth-child(3) {
+  width: 80%
+}
+
+.wing-skeleton-line:last-child {
+  width: 60%;
+  margin-bottom: 0
+}
+
+@keyframes skeleton-keyframes {
+  0% {
+      background-position: 0 0
+  }
+
+  to {
+      background-position: 480px 0
+  }
+}
+
+/* 重写文章列表样式 */
+.excerpt {
+  padding: 16px 0px 12px 200px;
+  overflow: hidden;
+}
+.excerpt a {
+  color: #444;
+}
+
+.excerpt-text {
+  padding-left: 0px
+}
+
+.excerpt-text .note {
+  margin-bottom: 0
+}
+
+.excerpt:nth-last-of-type(1) {
+  border-radius: 0 0 6px 6px
+}
+
+.excerpt .post-linkto {
+  text-align: right;
+  margin-bottom: 0;
+  margin-top: 5px
+}
+
+.excerpt .focus {
+  float: left;
+  margin-left: -200px;
+  width: 180px;
+  height: 123px;
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden
+}
+
+.excerpt .thumb {
+  flex: 1;
+  -o-object-fit: cover;
+  object-fit: cover
+}
+
+.excerpt header {
+  position: relative;
+  margin-bottom: 10px
+}
+
+.excerpt h2 {
+  display: inline;
+  font-size: 18px;
+  margin-top: 0;
+  font-weight: bold
+}
+
+.excerpt h2 a:hover {
+  color: #ff5e52;
+}
+
+.excerpt h2 a span {
+  color: #ff5e52
+}
+
+.excerpt h2 a:hover span {
+  color: #ff5e52;
+}
+
+.excerpt .cat,.excerpt time,.excerpt .pv,.excerpt .pc,.excerpt .-tags,.excerpt .author {
+  margin-right: 15px
+}
+
+.excerpt .author img {
+  vertical-align: middle;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  top: -2px
+}
+
+.excerpt .post-like {
+  float: right
+}
+
+.excerpt .post-like.actived {
+  color: #ff5e52
+}
+
+.excerpt .note {
+  font-size: 14px;
+  color: #666;
+  word-wrap: break-word;
+  margin-bottom: 0;
+  max-height: 46px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2
+}
+
+.excerpt .meta {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.excerpt .meta i {
+  margin-right: 6px;
+}
+
+.excerpt .meta a {
+  color: #999;
+}
+
+.excerpt .-tags a {
+  margin-right: 22px;
+  display: inline-block;
+  position: relative;
+}
+
+.excerpt .-tags a::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: -13px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #999;
+}
+
+.excerpt .-tags a:first-child::before {
+  display: none;
+}
+
+.excerpt .-tags a:last-child {
+  margin-right: 0;
+}
+
+.catleader {
+  position: relative;
+  font-size: 17px;
+  padding-left: 17px;
+}
+.catleader h3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -8px;
+  height: 16px;
+  width: 4px;
+  border-radius: 10px;
+  background-color: #ff5e52;
+}
+
 /* Dark Mode */
 .dark {
   background-color: #232830;
@@ -5141,9 +5263,6 @@ body .view-image-btn:hover {
 .dark body #app.layout .menu-badge .label {
   color: #bcc3ce;
   background-color: rgba(188, 195, 206, 0.1);
-}
-.dark body #app.layout #header .logo .fullname a {
-  color: #f7f8f9;
 }
 .dark body #app.layout #header .header__right .dark-mode-btn {
   display: none;
@@ -5188,30 +5307,6 @@ body .view-image-btn:hover {
   border-color: rgba(188, 195, 206, 0.2);
 }
 
-/* 20230111 增加说说被引用后暗黑模式的背景色 */
-.dark body .layout .article-dialog .notes-item {
-  background-color: rgba(42, 48, 57, 0.9);
-  }
-/* 20230111 恋爱天数黑夜模式下字体色 */
-.dark #htmer_time {
-  color: #f7f8f9;
-  }
-
- /* 20230209 适配夜间模式下「我的足迹」两种处理方式 */
-
-/*第一种*
-.dark .mapp-iw .mapp-info {
-  background: #66758c;
-  }
-.dark .mapp-ib-tip:before {
-  border-top: 10px solid #66758c;
-  }
-*/
-.dark .mapp-ib .mapp-iw * {
-  color: #66758c;
-  }
-
-
 /* 定义 dark 模式的颜色 */
 @media (prefers-color-scheme: dark) {
   html.auto {
@@ -5249,9 +5344,7 @@ body .view-image-btn:hover {
     color: #bcc3ce;
     background-color: rgba(188, 195, 206, 0.1);
   }
-  html.auto body #app.layout #header .logo .fullname a {
-    color: #f7f8f9;
-  }
+
   html.auto body #app.layout #header .header__right .dark-mode-btn {
     display: none;
   }
@@ -5299,227 +5392,17 @@ body .view-image-btn:hover {
   .dark .btn {
     background: #293038;
   }
-}
-
-
-/* 骨架屏动画 */
-.wing-skeleton-animated .wing-skeleton-line {
-  background: linear-gradient(90deg,#e4e6eb, rgba(228,230,235,0.4),#e4e6eb);
-  background-size: 480px 480px;
-  animation: skeleton-keyframes .6s linear infinite
-}
-
-.wing-skeleton {
-  width: 100%;
-  /* background-color: #ffffff; */
-}
-
-.wing-skeleton-avatar {
-  float: left;
-  margin-right: 12px;
-  background-color: #f3f3f3;
-  display: block
-}
-
-.wing-skeleton-avatar-circle {
-  border-radius: 50%
-}
-
-.wing-skeleton-avatar-square {
-  border-radius: 15%
-}
-
-.wing-skeleton-item {
-  padding-bottom: 21px;
-  margin-bottom: 21px;
-  border-bottom: 1px solid #f3f3f3
-}
-
-.wing-skeleton-item:last-child {
-  padding: 0;
-  margin: 0;
-  border: none
-}
-
-.wing-skeleton-content {
-  overflow: hidden;
-}
-
-.wing-skeleton-line {
-  width: 100%;
-  margin-bottom: 16px;
-  height: 14px
-}
-
-.wing-skeleton-line:first-child {
-  width: 40%;
-  margin-top: 8px
-}
-
-.wing-skeleton-line:nth-child(3) {
-  width: 80%
-}
-
-.wing-skeleton-line:last-child {
-  width: 60%;
-  margin-bottom: 0
-}
-
-@keyframes skeleton-keyframes {
-  0% {
-      background-position: 0 0
-  }
-
-  to {
-      background-position: 480px 0
+  .dark .excerpt a {
+    color: #999;
   }
 }
 
-
-
-.excerpt {
-  padding: 20px 20px 20px 220px;
-  overflow: hidden;
-  background-color: var(--tb--white);
-  border-bottom: 1px solid var(--tb--line)
-}
-
-.excerpt-text {
-  padding-left: 20px
-}
-
-.excerpt-text .note {
-  margin-bottom: 0
-}
-
-.excerpt:nth-last-of-type(1) {
-  border-radius: 0 0 6px 6px
-}
-
-.excerpt .post-linkto {
-  text-align: right;
-  margin-bottom: 0;
-  margin-top: 5px
-}
-
-.excerpt .focus {
-  float: left;
-  margin-left: -200px;
-  width: 180px;
-  height: 123px;
-  display: flex;
-  border-radius: 6px;
-  overflow: hidden
-}
-
-.excerpt .thumb {
-  flex: 1;
-  -o-object-fit: cover;
-  object-fit: cover
-}
-
-.excerpt header {
-  position: relative;
-  margin-bottom: 10px
-}
-
-.excerpt h2 {
-  display: inline;
-  font-size: 18px;
-  margin-top: 0;
-  font-weight: bold
-}
-
-.excerpt h2 a:hover {
-  color: var(--tb--main)
-}
-
-.excerpt h2 a span {
-  color: #ff5e52
-}
-
-.excerpt h2 a:hover span {
-  color: var(--tb--main)
-}
-
-.excerpt .cat,.excerpt time,.excerpt .pv,.excerpt .pc,.excerpt .-tags,.excerpt .author {
-  margin-right: 15px
-}
-
-.excerpt .author img {
-  vertical-align: middle;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  margin-right: 8px;
-  position: relative;
-  top: -2px
-}
-
-.excerpt .post-like {
-  float: right
-}
-
-.excerpt .post-like.actived {
-  color: var(--tb--main)
-}
-
-.excerpt .note {
-  font-size: 14px;
-  color: #666;
-  word-wrap: break-word;
-  margin-bottom: 0;
-  max-height: 46px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2
-}
-
-.excerpt .meta {
-  color: var(--tb--gray);
-  margin-top: 20px
-}
-
-.excerpt .meta i {
-  margin-right: 6px
-}
-
-.excerpt .meta a {
-  color: var(--tb--gray)
-}
-
-.excerpt .meta a:hover {
-  color: var(--tb--main)
-}
-
-.excerpt .-tags a {
-  margin-right: 22px;
-  display: inline-block;
-  position: relative
-}
-
-.excerpt .-tags a::before {
-  content: "";
-  position: absolute;
-  top: 9px;
-  left: -13px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: var(--tb--gray)
-}
-
-.excerpt .-tags a:first-child::before {
-  display: none
-}
-
-.excerpt .-tags a:last-child {
-  margin-right: 0
-}
 
 @media(max-width: 600px) {
+  #app {
+    /* 解决手机端横向滚动条的问题 */
+    overflow-x: hidden;
+  }
   .excerpt {
       border:none;
       padding: 14px 150px 15px 15px;
@@ -5533,7 +5416,6 @@ body .view-image-btn:hover {
       bottom: 0px;
       left: 15px;
       right: 15px;
-      border-top: 1px solid var(--tb--line);
       transform: scaleY(0.5);
       transform-origin: 0 0
   }

@@ -28,7 +28,7 @@ function biji_enqueue_scripts() {
 
     // 草莓ICON PRO
     wp_enqueue_style( 'caomei', get_template_directory_uri() . '/static/caomei/style.css', [], THEME_VERSION );
-    wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', [], THEME_VERSION );
+    wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css?v=1.1', [], THEME_VERSION );
 
     // 禁用jQuery
     // wp_deregister_script( 'jquery' );
@@ -374,10 +374,6 @@ function _get_post_thumbnail($size = 'thumbnail', $class = 'thumb') {
 	        $images = $strResult[1];
 
 	        foreach($images as $src){
-		        if( _hui('thumb_postfirstimg_lastname') ){
-		            $filetype = _get_filetype($src);
-		            $src = rtrim($src, '.'.$filetype)._hui('thumb_postfirstimg_lastname').'.'.$filetype;
-		        }
 
 		        $r_src = $src;
 		        break;

@@ -87,7 +87,7 @@ get_header(); ?>
                             </div>
                             <div class="notes-list" :style="{ opacity: loading ? 0.5 : 1 }">
                                 <note-card v-for="(note, index) in filterNoteList" :key="note.id" v-bind="{ logged, lately, note }" @event="data => handleNoteCard(data, note, index)" @topic="handleTopic" />
-                                <div v-if="paging.total && !loading && theEnd" class="text-center" style="opacity: 0.5;">{{ $lang.translate('No more') }}</div>
+                                <div v-if="paging.total && !loading && theEnd" class="text-center" style="opacity: 0.5;margin-top:16px;">{{ $lang.translate('No more') }}</div>
                             </div>
                         </main>
                         <aside class="notes-aside">

@@ -951,6 +951,7 @@ const $modules = new function () {
                         <div class="tile d-block">
                             <div v-if="isPost" class="tile-header flex-center justify-between">
                                 <div class="article-header text-gray text-tiny d-flex align-center">
+                                    <span v-if="note.is_sticky" class="sticky-icon">置顶</span>
                                     <h3 class="text-dark h5 mt-2 mb-0">
                                         <a :href="note.permalink">{{ note.title }}</a>
                                     </h3>
@@ -976,7 +977,7 @@ const $modules = new function () {
                                     </button>
                                 </div>
 
-                                <a  class="btn btn-link btn-sm text-gray d-flex align-center a-link" :href="note.permalink">
+                                <a class="btn btn-link btn-sm text-gray d-flex align-center a-link" :href="note.permalink">
                                     {{ $lang.translate('Read Article') }} <i class="dashicons dashicons-arrow-right-alt ml-1"></i>
                                 </a>
                             </div>

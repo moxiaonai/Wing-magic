@@ -27,11 +27,9 @@
      v-show="true">
     <header id="header" class="flex-center justify-between">
         <hgroup class="logo">
-            <h1 class="fullname">
-                <a href="<?php bloginfo( 'url' ); ?>">
-                    <img src="/wp-content/uploads/2023/02/1676115319-screenshot-20230211-193411-removebg-preview.png" alt="孤胆游侠" style="width: 88px; outline: none;">
-                </a>
-            </h1>
+            <a href="<?php bloginfo( 'url' ); ?>">
+                <img class="logo-img" src="https://img.fenewbee.com/blog/fenewbee-logo.png" alt="一只特立独行的猪">
+            </a>
         </hgroup>
         <section class="header__right d-flex">
             <form method="get" action="<?php bloginfo( 'url' ); ?>" class="search">
@@ -55,7 +53,12 @@
     <section id="core" class="container off-canvas off-canvas-sidebar-show">
         <!-- Aside -->
         <aside id="aside" class="off-canvas-sidebar">
-            <div class="probes"></div>
+            <!-- <div class="sidebar-blog-name">一只特立独行的猪</div> -->
+            <hgroup class="sidebar-logo">
+                <a href="<?php bloginfo( 'url' ); ?>">
+                    <img class="sidebar-img"  src="https://img.fenewbee.com/blog/fenewbee-logo.png" alt="一只特立独行的猪">
+                </a>
+            </hgroup>
             <section class="sticky">
                 <?php if ( is_single() && get_theme_mod( 'biji_setting_toc', true ) && ( $_toc = get_post_toc() ) ) : ?>
                 <input type="radio" id="tab-toc" name="aside-radio" hidden checked>
@@ -90,7 +93,4 @@
         <!-- Main -->
 
         <main id="main" class="uni-bg uni-shadow off-canvas-content">
-            <?php if ( is_home() || is_front_page() ) {
-                echo '这一段话只在首页显示。';
-            }?>
             <div class="content">
