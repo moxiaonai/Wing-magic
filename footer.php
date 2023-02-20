@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="text-center text-tiny mt-2 w-100" style="opacity: 0.2;">
+        <div class="state">文章中出现的商标及图像版权属于其合法持有人，只供传递信息之用，非商务用途。互动交流时请遵守理性，宽容，换位思考的原则。</div>
         <?php if ( $code = get_icp_num() ) { ?>
             <span class="mx-1"><a href="https://beian.miit.gov.cn" target="_blank"><?= $code; ?></a></span>
         <?php } ?>
@@ -88,7 +89,6 @@
         window.scrollTo(0, 0)
     };
 </script>
-<!--网站效率：<?php timer_stop( 4 ); ?>秒内查询了<?= get_num_queries(); ?>次数据库-->
 </body>
 
 </html>

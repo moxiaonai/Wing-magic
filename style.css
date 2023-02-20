@@ -15,6 +15,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
@@ -32,7 +34,7 @@ html {
 body {
   background-color: rgba(247, 248, 249, 0.8);
   color: #3b4351;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Microsoft YaHei", 微软雅黑, "Trebuchet MS", Arial, Verdana, Tahoma, sans-serif;
   font-size: 0.8rem;
   text-rendering: optimizeLegibility;
   margin: 0;
@@ -63,26 +65,6 @@ body {
   border-radius: 9px;
 }
 
-/**
- * Add the correct display in IE 9-.
- */
-article,
-aside,
-footer,
-header,
-nav,
-section {
-  display: block;
-}
-
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
 
 /* 锚点 */
 #full {
@@ -95,6 +77,7 @@ h1 {
   cursor: pointer;
   display: none;
 }
+
 /* Grouping content
    ========================================================================== */
 /**
@@ -125,24 +108,6 @@ hr {
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers. (removed)
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-/* Text-level semantics
-   ========================================================================== */
-/**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
- */
-a {
-  background-color: transparent;
-  /* 1 */
-  -webkit-text-decoration-skip: objects;
-  /* 2 */
-    outline-width: 0;
-}
-
-/**
  * Remove the outline on focused links when they are also active or hovered
  * in all browsers (opinionated).
  */
@@ -152,330 +117,8 @@ a:hover {
   color:#FF5E52 ;
 }
 
-/**
- * Modify default styling of address.
- */
-address {
-  font-style: normal;
-}
-
-/**
- * 1. Remove the bottom border in Firefox 39-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari. (removed)
- */
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-b,
-strong {
-  font-weight: inherit;
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-code,
-kbd,
-pre,
-samp {
-  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
-  /* 1 (changed) */
-  font-size: 1em;
-  /* 2 */
-}
-
-/**
- * Add the correct font style in Android 4.3-.
- */
-dfn {
-  font-style: italic;
-}
-
-/**
- * Add the correct background and color in IE 9-. (Removed)
- */
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-  font-weight: 400;
-  /* (added) */
-}
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Embedded content
-   ========================================================================== */
-/**
- * Add the correct display in IE 9-.
- */
-audio,
-video {
-  display: inline-block;
-}
-
-/**
- * Add the correct display in iOS 4-7.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/**
- * Remove the border on images inside links in IE 10-.
- */
-img {
-  border-style: none;
-}
-
-/**
- * Hide the overflow in IE.
- */
-svg:not(:root) {
-  overflow: hidden;
-}
-
-/* Forms
-   ========================================================================== */
-/**
- * 1. Change the font styles in all browsers (opinionated).
- * 2. Remove the margin in Firefox and Safari.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  /* 1 (changed) */
-  font-size: inherit;
-  /* 1 (changed) */
-  line-height: inherit;
-  /* 1 (changed) */
-  margin: 0;
-  /* 2 */
-}
-
-/**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-button,
-input {
-  /* 1 */
-  overflow: visible;
-}
-
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-button,
-select {
-  /* 1 */
-  text-transform: none;
-}
-
-/**
- * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
- *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS and Safari.
- */
-button,
-html [type=button],
-[type=reset],
-[type=submit] {
-  -webkit-appearance: button;
-  /* 2 */
-}
-
-/**
- * Remove the inner border and padding in Firefox.
- */
-button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-/**
- * Restore the focus styles unset by the previous rule (removed).
- */
-/**
- * Change the border, margin, and padding in all browsers (opinionated) (changed).
- */
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
-legend {
-  box-sizing: border-box;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */
-}
-
-/**
- * 1. Add the correct display in IE 9-.
- * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  display: inline-block;
-  /* 1 */
-  vertical-align: baseline;
-  /* 2 */
-}
-
-/**
- * Remove the default vertical scrollbar in IE.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * 1. Add the correct box sizing in IE 10-.
- * 2. Remove the padding in IE 10-.
- */
-[type=checkbox],
-[type=radio] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-[type=search] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
-}
-
-/**
- * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-cancel-button,
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
-}
-
-/* Interactive
-   ========================================================================== */
-/*
- * Add the correct display in IE 9-.
- * 1. Add the correct display in Edge, IE, and Firefox.
- */
-details,
-menu {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-  outline: none !important;
-}
-
-/* Scripting
-   ========================================================================== */
-/**
- * Add the correct display in IE 9-.
- */
-canvas {
-  display: inline-block;
-}
-
-/**
- * Add the correct display in IE.
- */
-template {
-  display: none;
-}
-
-/* Hidden
-   ========================================================================== */
-/**
- * Add the correct display in IE 10-.
- */
-[hidden] {
-  display: none;
-}
-
 a {
-  color: #444;
+  color: #FF5E52;
   outline: none !important;
   text-decoration: none;
   background-color: transparent;
@@ -534,17 +177,6 @@ h6,
   font-size: 0.6rem;
 }
 
-p {
-  margin: 0 0 0.5rem -0.1rem;
-  line-height: 1.2rem;
-  font-size: 0.7rem;
-}
-
-a,
-ins,
-u {
-  text-decoration-skip: ink edges;
-}
 
 abbr[title] {
   border-bottom: 0.05rem dotted;
@@ -605,64 +237,6 @@ dl dt {
 }
 dl dd {
   margin: 0.4rem 0 0.8rem 0;
-}
-
-html:lang(zh),
-html:lang(zh-Hans),
-.lang-zh,
-.lang-zh-hans {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
-}
-
-html:lang(zh-Hant),
-.lang-zh-hant {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Hiragino Sans CNS", "Microsoft JhengHei", "Helvetica Neue", sans-serif;
-}
-
-html:lang(ja),
-.lang-ja {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "Yu Gothic", YuGothic, Meiryo, "Helvetica Neue", sans-serif;
-}
-
-html:lang(ko),
-.lang-ko {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", "Helvetica Neue", sans-serif;
-}
-
-:lang(zh) ins,
-:lang(zh) u,
-:lang(ja) ins,
-:lang(ja) u,
-.lang-cjk ins,
-.lang-cjk u {
-  border-bottom: 0.05rem solid;
-  text-decoration: none;
-}
-:lang(zh) del + del,
-:lang(zh) del + s,
-:lang(zh) ins + ins,
-:lang(zh) ins + u,
-:lang(zh) s + del,
-:lang(zh) s + s,
-:lang(zh) u + ins,
-:lang(zh) u + u,
-:lang(ja) del + del,
-:lang(ja) del + s,
-:lang(ja) ins + ins,
-:lang(ja) ins + u,
-:lang(ja) s + del,
-:lang(ja) s + s,
-:lang(ja) u + ins,
-:lang(ja) u + u,
-.lang-cjk del + del,
-.lang-cjk del + s,
-.lang-cjk ins + ins,
-.lang-cjk ins + u,
-.lang-cjk s + del,
-.lang-cjk s + s,
-.lang-cjk u + ins,
-.lang-cjk u + u {
-  margin-left: 0.125em;
 }
 
 .table, body .layout .wp-block-table table {
@@ -3265,6 +2839,12 @@ a.text-error:visited {
 .timeline .timeline-item .timeline-left {
   flex: 0 0 auto;
 }
+.timeline .timeline-item .tile-subtitle a {
+  color: #666;
+}
+.timeline .timeline-item .tile-subtitle a:hover {
+  color: #FF5E52;
+}
 .timeline .timeline-item .timeline-content {
   flex: 1 1 auto;
   padding: 2px 0 2px 0.8rem;
@@ -3302,7 +2882,6 @@ a.text-error:visited {
 /*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
 code.prettyprint {
   background: #000;
-  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
   padding: 2px 6px;
   display: inline-block;
 }
@@ -3422,64 +3001,6 @@ li.L9 {
     color: #fc0;
   }
 }
-
-
-  /* 20230101跳动的心 */
-  .myheart
-  {
-    animation:beat 1.6s infinite;
-    width: 22px;
-  }
-	@keyframes beat
-  {
-	30%{transform:scale(1.1);}
-	100%{transform:scale(1);}
-  }
-
-  /* 20230211 加密内容段的样式 */
-  #jiami p {
-  margin: 0 0 0.5rem -0.1rem;
-  line-height: 1.2rem;
-  font-size: 0.7rem;
-  }
-
-  /* 20230211 回复可见内容段的样式 */
-.dlipp-cont-wp {
-  clear: both;
-  padding-top: 50px;
-  text-indent: 0;
-}
-.dlipp-cont-inner {
-  display: block;
-  position: relative;
-  margin-bottom: 50px;
-  border: 1px #c9c9c9 dashed;
-  margin-top: 1rem;
-}
-.dlipp-cont-hd {
-  padding: 0 20px;
-  line-height: 38px;
-  background-color: #f8f8f8;
-  text-align: center;
-  color: inherit;
-}
-.dlipp-cont-bd {
-  padding: 40px 20px;
-  text-align: center;
-  background-color: #fff;
-  font-size: 0.7rem;
-  margin-bottom: -0.7rem;
-  line-height: 1.2rem;
-}
-.dlipp-cont-ft {
-  line-height: 20px;
-  padding: 0 20px 10px;
-  text-align: center;
-  font-size: 0.5rem;
-  color: #999;
-  background-color: #fff;
-}
-
 
 body .layout .container {
   max-width: 60rem;
@@ -3832,11 +3353,10 @@ body .layout #notes .edit-status .editor {
   border: none;
 }
 body .layout #notes .article-content > p {
-  word-break: break-all;
+  word-wrap:break-word;
 }
 body .layout #notes .article-content > p:not(:last-child) {
   margin-bottom: 0.2rem;
-  margin-left: 0.05rem;
 }
 body .layout #notes .notes-core {
   width: 100%;
@@ -3894,7 +3414,23 @@ body .layout #notes .notes-tabbar .chip {
 body .layout #notes .notes-list {
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 }
+
+body .layout #notes  .sticky-icon {
+  line-height: 1;
+  padding: 5px 8px 6px;
+  font-size: 12px;
+  background-color: #ff5e52;
+  color: #fff;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  vertical-align: top;
+  top: 2px
+}
+
 body .layout #notes .notes-item {
   border-radius: 0.5rem;
 }
@@ -3902,7 +3438,6 @@ body .layout #notes .notes-item {
 body .layout #notes .notes-item .tile-header {
   width: 100%;
   margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
 }
 body .layout #notes .notes-item .tile-header .dropdown .loading {
   backdrop-filter: unset;
@@ -3912,7 +3447,6 @@ body .layout #notes .notes-item .tile-header .dropdown .loading ~ * {
   filter: blur(0.2rem);
 }
 body .layout #notes .notes-item .tile-content .article-content {
-  width: 0;
   flex: 1;
   margin-top: 8px;
 }
@@ -3920,12 +3454,7 @@ body .layout #notes .notes-item .tile-content .article-content.w-100 {
   width: 100%;
   margin: 0 0 .5rem;
 }
-body .layout #notes .notes-item .tile-content .article-content *:last-child {
-  /* margin-left: 0.05rem; */
-  vertical-align: initial;
-  margin-bottom: -0.01rem;
 
-}
 body .layout #notes .notes-item .tile-content .thumbnail {
   width: 100%;
   object-fit: cover;
@@ -3934,7 +3463,6 @@ body .layout #notes .notes-item .tile-content .thumbnail {
 }
 body .layout #notes .notes-item .tile-footer {
   width: 100%;
-  /* margin-top: -0.5rem; */
 }
 
 body .layout #notes .notes-item .tile-footer .a-link:hover {
@@ -3966,6 +3494,11 @@ body .layout #notes .notes-item-images__item img {
   width: 94%;
   height: 94%;
   object-fit: cover;
+  transition: all 0.6s;
+  object-fit: cover;
+}
+body .layout #notes .notes-item-images__item img:hover {
+  transform: scale(1.1);
 }
 body .layout #notes .notes-item .dropdown .menu {
   color: #66758c;
@@ -4216,7 +3749,10 @@ html :where(img[class*=wp-image-]){
   max-width: 100%;
   height: auto !important;
 }
-
+body .layout .article-content {
+  line-height: 1.75;
+  font-size: 15px;
+}
 body .layout .article-content ul:not([class]) li {
   list-style-type: circle;
 }
@@ -4720,7 +4256,7 @@ body pre {
   line-height: 1.6;
   background: #000;
   box-shadow: 0 0 0 1px rgba(188, 195, 206, 0.2) inset;
-  overflow: hidden;
+  overflow: auto;
   border-radius: 0.2rem;
   padding: 12px;
 }
@@ -5105,8 +4641,11 @@ body .view-image-btn:hover {
 
 .excerpt .thumb {
   flex: 1;
-  -o-object-fit: cover;
-  object-fit: cover
+  object-fit: cover;
+  transition: all 0.6s;
+}
+.excerpt .thumb:hover {
+  transform: scale(1.1);
 }
 
 .excerpt header {
@@ -5180,7 +4719,7 @@ body .view-image-btn:hover {
 }
 
 .excerpt .meta a {
-  color: #999;
+  color: #FF5E52;
 }
 
 .excerpt .-tags a {
@@ -5399,10 +4938,6 @@ body .view-image-btn:hover {
 
 
 @media(max-width: 600px) {
-  #app {
-    /* 解决手机端横向滚动条的问题 */
-    overflow-x: hidden;
-  }
   .excerpt {
       border:none;
       padding: 14px 150px 15px 15px;

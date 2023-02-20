@@ -2,7 +2,7 @@
     $categorys = get_the_category();
     if (is_single() && $categorys) {
         $category = $categorys[0];
-        echo '<div class="breadcrumbs"><span class="text-muted">当前位置：</span><a href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a> <small>></small> '.get_category_parents($category->term_id, true, ' <small>></small> ').'<span class="text-muted">'.'正文'.'</span></div>';
+        echo '<div class="breadcrumbs text-gray"><span class="text-muted">当前位置：</span><a href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a> <small>></small> '.get_category_parents($category->term_id, true, ' <small>></small> ').'<span class="text-muted">'.'正文'.'</span></div>';
     }
 ?>
 <header class="article-header">

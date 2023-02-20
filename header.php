@@ -63,7 +63,7 @@
                 <?php if ( is_single() && get_theme_mod( 'biji_setting_toc', true ) && ( $_toc = get_post_toc() ) ) : ?>
                 <input type="radio" id="tab-toc" name="aside-radio" hidden checked>
                 <input type="radio" id="tab-nav" name="aside-radio" hidden>
-                <ul class="aside-tab">
+                <ul class="aside-tab flex-center">
                     <li class="nav-active">
                         <label for="tab-nav" class="c-hand  flex-center"><i
                                     class="czs-choose-list-l"></i>&nbsp;<span>站点导航</span></label>
