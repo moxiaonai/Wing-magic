@@ -7,7 +7,7 @@
 ?>
 <header class="article-header">
     <h1 itemprop="name headline" class="article-title h2 mb-2"><?php the_title(); ?></h1>
-    <ul class="article-info d-flex text-gray reset-ul m-0">
+    <ul class="article-info d-flex text-gray reset-ul">
 		<?php if ( get_the_author_meta( 'display_name' ) ) : ?>
             <li>
                 <i class="czs-forum"></i>

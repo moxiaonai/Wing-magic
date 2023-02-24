@@ -165,8 +165,10 @@ const $modules = new function () {
                 computed: {
                     files() {
                         return (this.attachments || []).map(item => {
-                            const filename = item.source_url.split('/').pop();
-                            return { ...item, filename, name: this.truncation(filename) };
+                            if(item?.source_url ) {
+                                const filename =  item.source_url.split('/').pop();
+                                return { ...item, filename, name: this.truncation(filename) };
+                            }
                         });
                     },
                 },
@@ -307,11 +309,8 @@ const $modules = new function () {
                         return Promise.all(Array.from(file).map(e => this.compressImg(e, qualitys))) // 如果是 file 数组返回 Promise 数组
                 } else {
                     return new Promise((resolve) => {
-                        console.log(file)
                         if ((file.size / 1024).toFixed(2) < 300) {
-                            resolve({
-                                file: file
-                            })
+                            resolve(file)
                         } else {
                         const reader = new FileReader() // 创建 FileReader
                         reader.onload = ({
@@ -365,7 +364,8 @@ const $modules = new function () {
                                 canvas.height = targetHeight
                                 context.clearRect(0, 0, targetWidth, targetHeight)
                                 context.drawImage(image, 0, 0, targetWidth, targetHeight) // 绘制 canvas
-                                const canvasURL = canvas.toDataURL('image/jpeg', qualitys)
+                                const extType = file.type
+                                const canvasURL = canvas.toDataURL(extType, qualitys)
                                 const buffer = atob(canvasURL.split(',')[1])
                                 let length = buffer.length
                                 const bufferArray = new Uint8Array(new ArrayBuffer(length))
@@ -373,7 +373,7 @@ const $modules = new function () {
                                     bufferArray[length] = buffer.charCodeAt(length)
                                 }
                                 const miniFile = new File([bufferArray], file.name, {
-                                    type: 'image/jpeg'
+                                    type: extType
                                 })
                                 console.log({
                                     file: miniFile,
@@ -398,13 +398,11 @@ const $modules = new function () {
                 const len = { flag: 0, count: files.length };
                 this.uploading = true;
                 const imgs = await this.compressImg(files)
-                console.log('imgs',  imgs)
                 Array.from(imgs).forEach(file => {
-                    console.log('file', file)
                     const formData = new FormData();
                     formData.append("file", file);
                     file.id = Math.random().toString(32).substring(2);
-                    this.files.push({ id: file.id, source_url: file.name, loading: true });
+                    this.files.push({ id: file?.id, source_url: file.name, loading: true });
                     $h.rest('wp/v2/media', {
                         method: 'POST',
                         headers: {
@@ -413,19 +411,22 @@ const $modules = new function () {
                         },
                         body: formData,
                     }).then(({ id, guid, mime_type }) => {
-                        const name = guid.raw.split('/').pop();
-                        // 根据id替换
-                        this.files = this.files.map(item => {
-                            if ( item.id === file.id ) {
-                                item = { id, source_url: guid.raw, mime_type, loading: false };
-                            }
-                            return item;
-                        });
+                        if(id) {
+                            // 根据id替换
+                            this.files = this.files.map(item => {
+                                if ( item.id === file.id ) {
+                                    item = { id, source_url: guid.raw, mime_type, loading: false };
+                                }
+                                return item;
+                            });
+                        }
                     }).finally(() => {
                         if ( ++len.flag === len.count ) {
                             this.uploading = false;
                         }
-                    });
+                    }).catch(err=>{
+                        this.files.pop();
+                    })
                 });
                 e.target.value = ""; // 清空input
             },
@@ -949,8 +950,8 @@ const $modules = new function () {
             <div :class="'notes-item feat-' + featId">
                     <template v-if="!isEditor">
                         <div class="tile d-block">
-                            <div v-if="isPost" class="tile-header flex-center justify-between">
-                                <div class="article-header text-gray text-tiny d-flex align-center">
+                            <div v-if="isPost" class="tile-header">
+                                <div class="article-header flex-center justify-start">
                                     <span v-if="note.is_sticky" class="sticky-icon">置顶</span>
                                     <h3 class="text-dark h5 mt-2 mb-0">
                                         <a :href="note.permalink">{{ note.title }}</a>
@@ -1104,7 +1105,7 @@ const $modules = new function () {
                      .map(text => text.replace(/\s|&nbsp;|>/g, ''))
                      .filter(item => !!item)
                      .forEach(topic => {
-                         content = content.replaceAll(topic, `<span class="chip c-hand text-primary" data-topic="${topic}">#${topic.replace("#", "")}</span>`);
+                         content = content.replaceAll(topic, `<span class="chip c-hand text-primary" data-topic="${topic}">${topic.replace("#", "")}</span>`);
                      });
 
                 // 高亮引用 /note/5841

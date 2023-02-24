@@ -25,7 +25,7 @@ function ajax_get_all_posts_callback() {
     $page = tryGetValue( 'page', 1 );
     $sticky_ids = get_option('sticky_posts');
     $sticky_posts = []; //置顶文章
-    if( count($sticky_ids)>0 && $page <= 1 ){
+    if( ($type === 'all' || $type === 'post') &&  count($sticky_ids)>0 && $page <= 1 ){
         $args = array(
             'post__in'            => $sticky_ids,
             'posts_per_page'      => 4,

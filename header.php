@@ -8,7 +8,6 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="<?php echo home_url() . '/icon.png' ?>">
-    <meta name="referrer" content="no-referrer" />
     <?php wp_head(); ?>
     <?php if ( $_background = get_theme_mod( 'biji_setting_background', '' ) ): ?>
         <style>
@@ -26,11 +25,12 @@
 <div id="app" :class="['layout', animation, '<?= ( $_background ? 'less-animation' : '' ) ?>']" style="display: none;"
      v-show="true">
     <header id="header" class="flex-center justify-between">
-        <hgroup class="logo">
+        <section class="header__left">
             <a href="<?php bloginfo( 'url' ); ?>">
-                <img class="logo-img" src="https://img.fenewbee.com/blog/fenewbee-logo.png" alt="一只特立独行的猪">
+                <img class="logo-img" src="https://img.fenewbee.com/blog/icon.png" alt="一只特立独行的猪">
+                <span class="fullname"><?php bloginfo( 'name' ); ?></span>
             </a>
-        </hgroup>
+        </section>
         <section class="header__right d-flex">
             <form method="get" action="<?php bloginfo( 'url' ); ?>" class="search">
                 <input class="search-key s-circle" name="s" placeholder="Please enter..." type="text"
@@ -53,12 +53,11 @@
     <section id="core" class="container off-canvas off-canvas-sidebar-show">
         <!-- Aside -->
         <aside id="aside" class="off-canvas-sidebar">
-            <!-- <div class="sidebar-blog-name">一只特立独行的猪</div> -->
-            <hgroup class="sidebar-logo">
+            <div class="sidebar-blog-name">
                 <a href="<?php bloginfo( 'url' ); ?>">
-                    <img class="sidebar-img"  src="https://img.fenewbee.com/blog/fenewbee-logo.png" alt="一只特立独行的猪">
+                    <span class="fullname"><?php bloginfo( 'name' ); ?></span>
                 </a>
-            </hgroup>
+            </div>
             <section class="sticky">
                 <?php if ( is_single() && get_theme_mod( 'biji_setting_toc', true ) && ( $_toc = get_post_toc() ) ) : ?>
                 <input type="radio" id="tab-toc" name="aside-radio" hidden checked>
