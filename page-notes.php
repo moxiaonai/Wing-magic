@@ -93,7 +93,7 @@ get_header(); ?>
                         <aside class="notes-aside">
                             <section class="sticky">
                                 <heat-map />
-                                <topic-list :active="search.topics" @topic="handleTopic" />
+                                <topic-list ref="topicList" :active="search.topics" @topic="handleTopic" />
                             </section>
                         </aside>
                     </div>
@@ -238,6 +238,9 @@ get_header(); ?>
                         this.$refs.editor.setLoading(true);
                         $modules.actions.setNotes(this.form, { content, files }).then(() => {
                             this.$refs.editor.clear();
+                            // 通过ref触发手动更新topicList列表
+                            console.log('submitNote', content)
+                            this.$refs.topicList.getTopics();
                             this.reset();
                             this.search.type = this.private ? 'private' : 'note';
                             if ( ['all', 'note'].includes(this.search.type) || (this.private && this.search.type === 'private') ) {

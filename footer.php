@@ -3,23 +3,23 @@
 </section><!-- core -->
 
 <footer id="footer">
-    <div class="d-flex flex-center justify-between flex-wrap">
-        <div class='left'>
-            <span>&copy; <?= date( 'Y' ) ?> <a
-                        href="<?= get_bloginfo( 'url' ) ?>"><?= get_bloginfo( 'name' ) ?></a></span>
+    <div class="text-right">
+        <div class='copy'>
+            <span>&copy; 2019 - <?= date( 'Y' ) ?> <a
+                        href="<?= get_bloginfo( 'url' ) ?>"><i>FeNewbee</i></a>&nbsp; All Rights Reserved</span>
         </div>
-        <div class='right'>
-            <span>Theme by <a class="theme-name" href="https://biji.io" target="_blank"><?= THEME_NAME ?></a></span>
+        <div class='theme'>
+            <span>Powered by <a href="https://wordpress.org/"><i class="czs-wordpress"></i>&emsp;<i>Wordpress</i></a></span>,
+            <span>Theme by <a class="theme-name" href="https://github.com/moxiaonai/wing-magic" target="_blank"><i><?= THEME_NAME ?></i></a></span>
         </div>
     </div>
-    <div class="text-center text-tiny mt-2 w-100" style="opacity: 0.2;">
-        <div class="state">文章中出现的商标及图像版权属于其合法持有人，只供传递信息之用，非商务用途。互动交流时请遵守理性，宽容，换位思考的原则。</div>
+    <div class="text-right text-tiny w-100">
         <?php if ( $code = get_icp_num() ) { ?>
-            <span class="mx-1"><a href="https://beian.miit.gov.cn" target="_blank"><?= $code; ?></a></span>
+            <span><a href="https://beian.miit.gov.cn" target="_blank"><i><?= $code; ?></a></i></span>
         <?php } ?>
         <?php if ( $code = get_theme_mod( 'biji_setting_net' ) ) { ?>
-            <span class="mx-1"><a href="https://www.beian.gov.cn/portal/registerSystemInfo"
-                                  target="_blank"><?= $code; ?></a></span>
+            <span><a href="https://www.beian.gov.cn/portal/registerSystemInfo"
+                                  target="_blank"><i><?= $code; ?></a></i></span>
         <?php } ?>
     </div>
 </footer>

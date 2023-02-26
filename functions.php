@@ -352,6 +352,13 @@ function get_praise( $post_id = null ) {
     return ( get_post_meta( $post_id, 'praise', true ) ?: 0 ) + ( get_post_meta( $post_id, 'dotGood', true ) ?: 0 );
 }
 
+function get_views( $post_id = null ) {
+    $post_id = $post_id ?: get_the_ID();
+
+    return ( get_post_meta( $post_id, 'views', true ) ?: 0 );
+}
+
+
 // 获取文章缩略图
 function _get_post_thumbnail($size = 'thumbnail', $class = 'thumb') {
 	global $post;
@@ -468,6 +475,19 @@ function _get_excerpt($limit = 120, $after = '...') {
 		return $excerpt;
 	}
 }
+
+//代码来自高时银博客
+//http://wanlimm.com/77201506204457.html
+function ashuwp_add_book_box(){
+    add_meta_box( 'ashuwp_book_sticky', '自定义文章类型置顶', 'ashuwp_book_sticky', 'book', 'side', 'high' );
+}
+function ashuwp_book_sticky (){ ?>
+    <input id="super-sticky" name="sticky" type="checkbox" value="sticky" <?php checked( is_sticky() ); ?> /><label for="super-sticky" class="selectit">置顶本产品</label>
+    <?php
+}
+
+add_action( 'add_meta_boxes', 'ashuwp_add_book_box' );
+
 
 // 全部配置完毕
 // Customize your functions

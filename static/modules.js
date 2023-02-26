@@ -925,6 +925,7 @@ const $modules = new function () {
         },
         methods: {
             getTopics() {
+                console.log('getTopics')
                 this.loading = true;
                 $h.ajax({
                     query: { action: 'get_topics' }
@@ -953,15 +954,32 @@ const $modules = new function () {
                             <div v-if="isPost" class="tile-header">
                                 <div class="article-header flex-center justify-start">
                                     <span v-if="note.is_sticky" class="sticky-icon">置顶</span>
-                                    <h3 class="text-dark h5 mt-2 mb-0">
-                                        <a :href="note.permalink">{{ note.title }}</a>
+                                    <h3 class="h3 mt-2 mb-0">
+                                        <a class="a-link" :href="note.permalink">{{ note.title }}</a>
                                     </h3>
                                 </div>
+                                <div class="tile-footer">
+                                    <ul class="note-meta text-gray">
+                                        <li class="note-meta-time"><i class="czs-time-l"/><time>{{noteDate}}</time></li>
+                                        <li class="note-meta-category"><a class="a-link" :href="'/category/'+note.category[0].slug"><i class="czs-folder-l"/>{{ category }}</a></li>
+                                        <li class="note-meta-comment" @click="handleComment"><span class="a-link"><i class="czs-comment-l"/>{{note.comment_count}}</span></li>
+                                        <li class="note-meta-praise" @click="handleMenuClick({ id: 'praise' })">
+                                            <span class="a-link">
+                                                <i class="czs-heart-l"/>
+                                                <span :class="'praise-' + note.id">{{ notePraise }}</span>
+                                            </span>
+                                        </li>
+                                        <li class="note-meta-view">
+                                            <i class="czs-eye-l"/>
+                                            <span>{{ noteView }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="tile-content p-0">
+                            <div v-if="!isPost" class="tile-content p-0">
                                 <div :class="['flex-wrap', { 'd-flex': !isPost }]">
                                     <img v-if="note.thumbnail" class="thumbnail s-rounded" :src="note.thumbnail" alt=""/>
-                                    <div :class="['article-content', { 'w-100': isPost }]" v-html="superContent" @click="handleDelegate"></div>
+                                    <div v-if="!isPost" :class="['article-content', { 'w-100': isPost }]" v-html="superContent" @click="handleDelegate"></div>
                                 </div>
                                 <div v-if="note.images" class="notes-item-images flex-center justify-start">
                                     <div class="notes-item-images__item c-zoom-in" v-for="item in note.images" :key="item.id">
@@ -970,32 +988,20 @@ const $modules = new function () {
                                 </div>
                                 <attachment-chips v-if="note.attachment" :attachments="note.attachment"></attachment-chips>
                             </div>
-                            <div v-if="isPost" class="tile-footer text-gray text-tiny flex-center justify-between">
-                                <div class="flex-center">
-                                    <time class="mr-2">{{ noteDate }}</time>
-                                    <button class="btn btn-link btn-sm text-gray d-flex align-center" @click="handleComment">
-                                        <i class="czs-talk mr-1"></i> {{ note.comment_count }}
-                                    </button>
-                                </div>
-
-                                <a class="btn btn-link btn-sm text-gray d-flex align-center a-link" :href="note.permalink">
-                                    {{ $lang.translate('Read Article') }} <i class="dashicons dashicons-arrow-right-alt ml-1"></i>
-                                </a>
-                            </div>
                             <div v-if="!isPost" class="tile-header flex-center justify-between">
-                                <div class="article-header text-gray text-tiny d-flex align-center">
-                                    <div  class="flex-center">
-                                        <time class="mr-2" :datetime="note.date" itemprop="datePublished" pubdate>{{ noteDate }}</time>
-                                        <button class="btn btn-link btn-sm text-gray mr-2" @click="handleComment">
-                                            <i class="czs-talk"></i> {{ note.comment_count }}
-                                        </button>
-                                        <button :class="['btn btn-link btn-sm text-gray mr-2', { 'text-error': praise }]"  @click="handleMenuClick({ id: 'praise' })">
-                                            <i class="czs-heart"></i> <span :class="'praise-' + note.id">{{ notePraise }}</span>
-                                        </button>
-                                        <span v-if="note.status === 'private'" class="chip bg-gray text-gray">{{ note.status.toLocaleUpperCase() }}</span>
-                                    </div>
+                                <div class="tile-footer">
+                                    <ul class="note-meta text-gray">
+                                        <li class="note-meta-time"><i class="czs-time-l"/><time>{{noteDate}}</time></li>
+                                        <li class="note-meta-comment" @click="handleComment"><span class="a-link"><i class="czs-comment-l"/>{{note.comment_count}}</span></li>
+                                        <li class="note-meta-praise" @click="handleMenuClick({ id: 'praise' })">
+                                            <span class="a-link">
+                                                <i class="czs-heart-l"/>
+                                                <span :class="'praise-' + note.id">{{ notePraise }}</span>
+                                            </span>
+                                        </li>
+                                        <span  v-if="note.status === 'private'" class="chip bg-gray text-gray">{{ note.status.toLocaleUpperCase() }}</span>
+                                    </ul>
                                 </div>
-
                                 <slot name="right-icon">
                                     <div v-if="!isPost" class="dropdown mr-1" hover-show>
                                         <a href="javascript:void(0);" class="btn btn-link btn-action btn-sm flex-center dropdown-toggle text-gray" tabindex="0">
@@ -1126,17 +1132,20 @@ const $modules = new function () {
                 return content;
             },
             category() {
-                return (this.note.category || []).map(({ name }) => name).join(', ');
+                return (this.note.category || []).map(({ name }) => name).join('/');
             },
             noteDate() {
                 if ( !this.note.date ) return '';
-                if ( this.lately ) {
+                if ( this.lately) {
                     return Lately && Lately.format(this.note.date);
                 }
-                return dayjs && dayjs(this.note.date).format('YYYY/MM/DD');
+                return dayjs && dayjs(this.note.date).format('YYYY-MM-DD');
             },
             notePraise() {
                 return String(this.note.fields && (this.note.fields.praise || 0));
+            },
+            noteView() {
+                return String(this.note.fields && (this.note.fields.views || 0));
             },
             // 防抖
             debounceMenuClick() {
@@ -1337,7 +1346,7 @@ const $modules = new function () {
                     if ( !i && (+num) > (+el.innerText) ) {
                         new Vue().$toast({ type: 'success', message: $lang.translate('Good luck') });
                     }
-                    el.parentNode.classList.toggle('text-error');
+                    // el.parentNode.classList.toggle('text-error');
                     el && (el.innerHTML = num);
                 });
                 return !!Cookies.get(`praise_${post_id}`);
