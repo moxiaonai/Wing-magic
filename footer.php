@@ -4,22 +4,22 @@
 
 <footer id="footer">
     <div class="text-right">
-        <div class='copy'>
-            <span>&copy; 2019 - <?= date( 'Y' ) ?> <a
-                        href="<?= get_bloginfo( 'url' ) ?>"><i>FeNewbee</i></a>&nbsp; All Rights Reserved</span>
-        </div>
         <div class='theme'>
-            <span>Powered by <a href="https://wordpress.org/"><i class="czs-wordpress"></i>&emsp;<i>Wordpress</i></a></span>,
+            <span>Powered by <a href="https://wordpress.org/"><i>Wordpress</i></a></span>,
             <span>Theme by <a class="theme-name" href="https://github.com/moxiaonai/wing-magic" target="_blank"><i><?= THEME_NAME ?></i></a></span>
+        </div>
+        <div class='copy'>
+            <span>&copy;<?= date( 'Y' ) ?> <a
+                        href="<?= get_bloginfo( 'url' ) ?>"><i><?php  echo get_bloginfo('name'); ?></i>&nbsp;All rights reserved</a></span>
         </div>
     </div>
     <div class="text-right text-tiny w-100">
         <?php if ( $code = get_icp_num() ) { ?>
-            <span><a href="https://beian.miit.gov.cn" target="_blank"><i><?= $code; ?></a></i></span>
+            <span><a href="https://beian.miit.gov.cn" target="_blank"><?= $code; ?></a></span>
         <?php } ?>
         <?php if ( $code = get_theme_mod( 'biji_setting_net' ) ) { ?>
             <span><a href="https://www.beian.gov.cn/portal/registerSystemInfo"
-                                  target="_blank"><i><?= $code; ?></a></i></span>
+                                  target="_blank"><?= $code; ?></a></span>
         <?php } ?>
     </div>
 </footer>

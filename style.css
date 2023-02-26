@@ -4020,7 +4020,6 @@ body .layout #footer {
   margin: 0 auto;
   padding: 3% 0;
   font-size: .7rem;
-  font-family: Arial;
 }
 body .layout #footer a {
   color: var(--wpColor2);
