@@ -35,10 +35,10 @@
             <form method="get" action="<?php bloginfo( 'url' ); ?>" class="search">
                 <input class="search-key s-circle" name="s" placeholder="Please enter..." type="text"
                        required="required"/>
-                <i class="text-small czs-search-l flex-center"></i>
+                <i class="text-small czs-search-l flex-center text-gray"></i>
             </form>
             <a
-                class="flex-center s-circle tooltip"
+                class="flex-center s-circle tooltip text-gray"
                 @click="toggleSkinMode"
                 href="javascript:void(0);"
                 :data-tooltip="mode === 'dark' ? 'dark' : 'light'">
@@ -59,20 +59,7 @@
                 </a>
             </div>
             <section class="sticky">
-                <?php if ( is_single() && get_theme_mod( 'biji_setting_toc', true ) && ( $_toc = get_post_toc() ) ) : ?>
-                <input type="radio" id="tab-toc" name="aside-radio" hidden checked>
-                <input type="radio" id="tab-nav" name="aside-radio" hidden>
-                <ul class="aside-tab flex-center">
-                    <li class="nav-active">
-                        <label for="tab-nav" class="c-hand  flex-center"><i
-                                    class="czs-choose-list-l"></i>&nbsp;<span>站点导航</span></label>
-                    </li>
-                    <li class="toc-active">
-                        <label for="tab-toc" class="c-hand flex-center"><i class="czs-read-l"></i>&nbsp;<span>文章目录</span></label>
-                    </li>
-                </ul>
-                <?php print $_toc;
-                    endif;
+                <?php
                     foreach ( [ 'header_nav', 'footer_nav' ] as $name ) {
                         if ( has_nav_menu( $name ) ) {
                             wp_nav_menu( [
@@ -83,7 +70,7 @@
                             ] );
                         }
                     }
-                dynamic_sidebar( 'aside-widget-area' );
+                    dynamic_sidebar( 'aside-widget-area' );
                 ?>
             </section>
         </aside>

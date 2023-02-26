@@ -2,6 +2,8 @@
     return;
 } ?>
 
+<!-- 评论锚点跳转 -->
+<div id="respond"></div>
 <section id="comments"></section>
 <script>
     window.ArticleData = {

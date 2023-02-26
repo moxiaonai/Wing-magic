@@ -156,6 +156,7 @@ function ajax_get_all_posts_callback() {
         }
 
         $post->thumbnail = replace_domain( $post->thumbnail );
+        $post->author_name = get_user_by('id', $post->author)->data->display_name;
         $sticky_ids = get_option('sticky_posts');
         $post->is_sticky = is_array($sticky_ids) && in_array($post->id, $sticky_ids);//是否置顶
         return $post;
