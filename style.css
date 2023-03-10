@@ -216,6 +216,9 @@ blockquote {
   border-inline-start: 4px solid var(--wpColor);
   padding-inline-start: 1.2rem;
   margin: .8rem 0;
+  background: var(--wpColor6);
+  padding-top: .4rem;
+  padding-bottom: .4rem;
 }
 
 blockquote cite {
@@ -3666,11 +3669,6 @@ body .layout .article-header .article-info {
   margin: 1rem 0 0;
 }
 
-body .layout .article-header .article-info li i {
-  position: relative;
-  top: 1px;
-  margin-right: 2px;
-}
 body .layout .article-subtitle ul {
   margin: 0 -3%;
   font-size: 0.7rem;
@@ -3720,6 +3718,18 @@ body .layout .article-content {
 body .layout .article-content ul, body .layout .article-content ol{
   margin-left: .6rem;
 }
+
+body .layout .article-content ol li::marker {
+    background-color: var(--wpColor4);
+    border-radius: 20px;
+    color: var(--wpColor1);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+body .layout .article-content ul li p, body .layout .article-content ol li p{
+  display: inline-block;
+}
 body .layout .article-content ul:not([class]) li {
   list-style-type: circle;
 }
@@ -3747,7 +3757,7 @@ body .layout .article-content .blocks-gallery-item:hover figcaption {
   margin: .6rem 0;
   padding: .6rem 1rem;
   position: relative;
-  background-color: #f8f8f8;
+  background-color: var(--wpColor6);
 }
 
 .article-content p.tip code {
