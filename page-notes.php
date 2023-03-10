@@ -239,8 +239,9 @@ get_header(); ?>
                         $modules.actions.setNotes(this.form, { content, files }).then(() => {
                             this.$refs.editor.clear();
                             // 通过ref触发手动更新topicList列表
-                            console.log('submitNote', content)
-                            this.$refs.topicList.getTopics();
+                            if(content.match(/.?#([^#|^<\s]+)/g)) {
+                                this.$refs.topicList.getTopics();
+                            }
                             this.reset();
                             this.search.type = this.private ? 'private' : 'note';
                             if ( ['all', 'note'].includes(this.search.type) || (this.private && this.search.type === 'private') ) {

@@ -11,7 +11,7 @@
             $categorys = get_the_category();
             if (is_single() && $categorys) {
                 $category = $categorys[0];
-                echo "<li><i class='czs-folder-l'></i>&emsp;".get_category_parents($category->term_id, true, '')."</li>";
+                echo "<li><i class='czs-folder-l'></i>".get_category_parents($category->term_id, true, '')."</li>";
             }
         ?>
         <li class="c-hand">
