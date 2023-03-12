@@ -1,7 +1,3 @@
-</div><!-- content -->
-</main><!-- main -->
-</section><!-- core -->
-
 <footer id="footer">
     <div class="text-right">
         <div class='theme'>

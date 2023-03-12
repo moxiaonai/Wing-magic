@@ -2967,26 +2967,28 @@ body .layout .uni-card:not([class*=bg-]) {
 }
 body .layout #header {
   position: relative;
-  width: 92%;
-  height: 6rem;
-  max-width: 60rem;
+  width: 100%;
+  padding: 0 4%;
+  height: 3rem;
   margin: 0 auto;
+  background: #fff;
 }
+
 body .layout #header .header__left  a{
   display: flex;
   align-items: center;
 }
 
 #header .logo-img {
-  width: 80px;
-  height: 80px;
-  border: 4px solid #EEE;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.1rem solid #EEE;
   border-radius: 50%;
-  transition:.5s;
+  transition: 0.5s;
 }
 #header .logo-img:hover {
   transform:rotate(180deg);
-  border: 4px solid #ccc;
+  border: .1rem solid var(--wpColor0);
 }
 
 body .layout #header .header__left .fullname {
@@ -3064,13 +3066,16 @@ body .layout #header .header__right .menu-btn {
   display: none;
   font-size: 1rem;
 }
+
+/* 主体部分 */
 body .layout #core {
   position: relative;
   display: flex;
   padding: 0;
+  margin-top: .6rem;
 }
 body .layout #aside {
-  max-width: 12rem;
+  max-width: 10rem;
   width: 100%;
   margin-right: 0.5rem;
   z-index: 0;
@@ -4697,7 +4702,7 @@ body .view-image-btn:hover {
 .dark body #app.layout #header .header__right .light-mode-btn {
   display: inline-flex;
 }
-.dark body #app.layout #aside {
+.dark body #app.layout #aside, .dark body .layout #header {
   background: #303742;
 }
 .dark body #app.layout #aside .header_nav li:not([class*=current-]),

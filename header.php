@@ -38,10 +38,9 @@
                 <i class="text-small czs-search-l flex-center text-gray"></i>
             </form>
             <a
-                class="flex-center s-circle tooltip text-gray"
+                class="flex-center s-circle text-gray"
                 @click="toggleSkinMode"
-                href="javascript:void(0);"
-                :data-tooltip="mode === 'dark' ? 'dark' : 'light'">
+                href="javascript:void(0);">
                 <i  v-if="mode === 'dark'" class="czs-moon"></i>
                 <i  v-else class="czs-sun"></i>
             </a>
